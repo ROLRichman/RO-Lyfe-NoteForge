@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<title>RO'Lyfe NoteForge™ | Capital Intelligence OS</title>
+<title>
+RO'Lyfe NoteForge™ | Capital Intelligence OS
+</title>
 
-<meta name="description" content="RO'Lyfe NoteForge - Note Acquisition, Creative Finance, Investor Placement and Underwriting Engine">
+<meta name="description" content="RO'Lyfe NoteForge - Note Acquisition, Creative Finance, Investor Placement, AI Underwriting Engine">
 
 <link rel="stylesheet" href="styles.css">
 
 <link rel="icon" type="image/png" href="assets/rolyfe-logo.png">
+
+
+<!-- PDF ENGINE -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 
 </head>
 
@@ -19,53 +29,70 @@
 <body>
 
 
-<!-- LOGIN SCREEN -->
+
+<!-- ==========================
+LOGIN COMMAND CENTER
+========================== -->
+
 
 <div id="loginScreen" class="login-screen">
 
-    <div class="login-box">
 
-        <img src="assets/rolyfe-logo.png" 
-             class="login-logo"
-             alt="RO'Lyfe Logo">
+<div class="login-box">
 
 
-        <h1>
-            🏦 RO'Lyfe NoteForge™
-        </h1>
-
-        <p>
-            Secure Capital Workspace
-        </p>
+<img 
+src="assets/rolyfe-logo.png"
+class="login-logo"
+alt="RO Lyfe Logo">
 
 
-        <input 
-        id="loginEmail"
-        type="email"
-        placeholder="Email">
+<h1>
+🏦 RO'Lyfe NoteForge™
+</h1>
 
 
-        <input 
-        id="loginPassword"
-        type="password"
-        placeholder="Password">
+<p>
+Secure Capital Intelligence Workspace
+</p>
 
 
-        <button 
-        class="glow-btn"
-        onclick="loginUser()">
 
-        ENTER COMMAND CENTER
-
-        </button>
+<input
+id="loginEmail"
+type="email"
+placeholder="Enter Email">
 
 
-        <small>
-        RO'Lyfe Holdings LLC<br>
-        Rooted in Access. Built for Growth.
-        </small>
+<input
+id="loginPassword"
+type="password"
+placeholder="Enter Password">
 
-    </div>
+
+
+<button
+class="glow-btn"
+onclick="loginUser()">
+
+🔐 ENTER COMMAND CENTER
+
+</button>
+
+
+
+<small>
+
+RO'Lyfe Holdings LLC™
+
+<br>
+
+Rooted in Access. Built for Growth.
+
+</small>
+
+
+</div>
 
 </div>
 
@@ -73,9 +100,14 @@
 
 
 
-<!-- MAIN APPLICATION -->
+<!-- ==========================
+MAIN APPLICATION
+========================== -->
+
 
 <div id="app" class="app hidden">
+
+
 
 
 
@@ -86,20 +118,23 @@
 
 <div class="brand">
 
-<img src="assets/rolyfe-logo.png"
-class="logo"
-alt="RO'Lyfe">
+
+<img
+src="assets/rolyfe-logo.png"
+class="logo">
 
 
 <div>
 
 <h1>
-RO'Lyfe NoteForge™
+🏦 RO'Lyfe NoteForge™
 </h1>
 
-<span>
-Note Acquisition • Creative Finance • Underwriting Engine
-</span>
+
+<p>
+Note Acquisition • Creative Finance • AI Underwriting Engine
+</p>
+
 
 </div>
 
@@ -108,13 +143,24 @@ Note Acquisition • Creative Finance • Underwriting Engine
 
 
 
-<button 
-class="menu-btn"
-onclick="toggleMenu()">
+<div class="header-actions">
 
-☰
+
+<button onclick="toggleTheme()">
+
+🌙
 
 </button>
+
+
+<button onclick="logoutUser()">
+
+Logout
+
+</button>
+
+
+</div>
 
 
 </header>
@@ -125,6 +171,7 @@ onclick="toggleMenu()">
 
 <!-- MOBILE MENU -->
 
+
 <nav id="mobileMenu" class="mobile-menu">
 
 
@@ -133,13 +180,18 @@ onclick="toggleMenu()">
 </button>
 
 
+<button onclick="scrollSection('property')">
+🏠 Property Hub
+</button>
+
+
 <button onclick="scrollSection('notes')">
 📄 Notes
 </button>
 
 
-<button onclick="scrollSection('property')">
-🏠 Property Research
+<button onclick="scrollSection('offers')">
+🤝 Offers
 </button>
 
 
@@ -149,7 +201,7 @@ onclick="toggleMenu()">
 
 
 <button onclick="scrollSection('investors')">
-🤝 Investors
+💰 Investors
 </button>
 
 
@@ -159,18 +211,17 @@ onclick="toggleMenu()">
 
 
 
-
-
 <main class="container">
 
 
+<!-- NEXT PART CONTINUES HERE -->
+
+    <!-- ==========================
+PORTFOLIO COMMAND CENTER
+========================== -->
 
 
-
-<!-- DASHBOARD -->
-
-<section id="dashboard"
-class="section">
+<section id="dashboard" class="section">
 
 
 <h2>
@@ -183,467 +234,10 @@ class="section">
 
 
 
-<div class="stat-card">
-
-<h3>
-Total Notes
-</h3>
-
-<div id="totalNotes">
-0
-</div>
-
-</div>
-
-
-
-
-
-<div class="stat-card">
-
-<h3>
-UPB Balance
-</h3>
-
-<div id="totalUPB">
-$0
-</div>
-
-</div>
-
-
-
-
-
-<div class="stat-card">
-
-<h3>
-Purchase Price
-</h3>
-
-<div id="purchasePrice">
-$0
-</div>
-
-</div>
-
-
-
-
-
-<div class="stat-card">
-
-<h3>
-Target Yield
-</h3>
-
-<div id="targetYield">
-0%
-</div>
-
-</div>
-
-
-
-</div>
-
-
-
-<div class="dashboard-grid">
-
-
-
-<div class="stat-card">
-
-<h3>
-Discount Captured
-</h3>
-
-<div id="discountAmount">
-$0
-</div>
-
-</div>
-
-
-
-<div class="stat-card">
-
-<h3>
-Monthly Cash Flow
-</h3>
-
-<div id="monthlyCashflow">
-$0
-</div>
-
-</div>
-
-
-
-<div class="stat-card">
-
-<h3>
-Compound ROI
-</h3>
-
-<div id="compoundROI">
-0%
-</div>
-
-</div>
-
-
-
-<div class="stat-card">
-
-<h3>
-RO'Lyfe Deal Score
-</h3>
-
-<div id="dealScore">
--- 
-</div>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- PROPERTY RESEARCH -->
-
-<section id="property"
-class="section">
-
-
-<h2>
-🔎 Property Intelligence Hub
-</h2>
-
-
-<div class="card">
-
-
-<input 
-id="propertyAddress"
-placeholder="Enter property address">
-
-
-<div class="button-grid">
-
-
-<button onclick="openZillow()">
-🏠 Zillow
-</button>
-
-
-<button onclick="openRedfin()">
-🏡 Redfin
-</button>
-
-
-<button onclick="openRealtor()">
-🔑 Realtor
-</button>
-
-
-<button onclick="openPropWire()">
-📊 PropWire
-</button>
-
-
-<button onclick="openOPA()">
-🏛 Philadelphia OPA
-</button>
-
-
-<button onclick="openPropertyChecker()">
-📍 Property Checker
-</button>
-
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- NOTE ANALYZER -->
-
-
-<section id="notes"
-class="section">
-
-
-<h2>
-📄 Note Analyzer
-</h2>
-
-
-
-<div class="card">
-
-
-<div class="input-grid">
-
-
-<input 
-id="noteUPB"
-placeholder="Current UPB">
-
-
-<input 
-id="notePurchase"
-placeholder="Purchase Price">
-
-
-<input 
-id="noteRate"
-placeholder="Interest Rate %">
-
-
-<input 
-id="notePayment"
-placeholder="Monthly Payment">
-
-
-<input 
-id="notePayments"
-placeholder="Remaining Payments">
-
-
-</div>
-
-
-
-<button 
-class="glow-btn"
-onclick="analyzeNote()">
-
-RUN NOTE ANALYSIS
-
-</button>
-
-
-
-
-<div id="noteResults"
-class="result-box">
-
-Waiting for analysis...
-
-</div>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ROI ENGINE -->
-
-
-<section class="section">
-
-
-<h2>
-📈 ROI & Compound Engine
-</h2>
-
-
-<div class="card">
-
-
-<div class="input-grid">
-
-
-<input 
-id="investmentAmount"
-placeholder="Investment Amount">
-
-
-<input 
-id="cashFlow"
-placeholder="Monthly Cash Flow">
-
-
-<input 
-id="investmentYears"
-placeholder="Years">
-
-
-</div>
-
-
-
-<button 
-class="glow-btn"
-onclick="calculateROI()">
-
-CALCULATE RETURNS
-
-</button>
-
-
-<div id="roiResults"
-class="result-box">
-
-No calculation yet.
-
-</div>
-
-
-</div>
-
-
-</section>
-
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-
-<title>RO'Lyfe NoteForge™ | Command Center</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="RO'Lyfe NoteForge - Note Acquisition, Creative Finance, Investor Placement, Underwriting Engine">
-
-<link rel="stylesheet" href="styles.css">
-
-<!-- RO'Lyfe Logo -->
-<link rel="icon" type="image/png" href="assets/rolyfe-logo.png">
-
-<!-- PDF Engine -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-</head>
-
-<body>
-
-<!-- LOGIN OVERLAY -->
-<div id="loginScreen" class="login-screen">
-
-    <div class="login-box">
-
-        <img src="assets/rolyfe-logo.png" 
-        class="login-logo">
-
-        <h1>🏦 RO'Lyfe NoteForge™</h1>
-
-        <p>
-        Capital Intelligence Command Center
-        </p>
-
-        <input 
-        id="loginEmail"
-        type="email"
-        placeholder="Email">
-
-        <input 
-        id="loginPassword"
-        type="password"
-        placeholder="Password">
-
-        <button 
-        class="glow-btn"
-        onclick="loginUser()">
-
-        🔐 Enter Command Center
-
-        </button>
-
-        <small>
-        Powered by Root Of Lyfe Holdings LLC™
-        </small>
-
-    </div>
-
-</div>
-
-
-<!-- MAIN APP -->
-
-<div id="app" class="app hidden">
-
-
-<!-- HEADER -->
-
-<header class="top-header">
-
-<div class="brand">
-
-<img src="assets/rolyfe-logo.png">
-
-<div>
-
-<h1>
-🏦 RO'Lyfe NoteForge™
-</h1>
-
-<p>
-Note Acquisition • Creative Finance • Investor Placement • Underwriting Engine
-</p>
-
-</div>
-
-</div>
-
-
-<div class="header-actions">
-
-<button onclick="toggleTheme()">
-🌙 Theme
-</button>
-
-<button onclick="logoutUser()">
-Logout
-</button>
-
-</div>
-
-
-</header>
-
-
-
-<!-- DASHBOARD -->
-
-<section class="dashboard-grid">
-
-
 <div class="metric-card">
 
 <h3>
-📊 Total Notes
+Total Notes
 </h3>
 
 <h2 id="totalNotes">
@@ -653,10 +247,11 @@ Logout
 </div>
 
 
+
 <div class="metric-card">
 
 <h3>
-💰 UPB Balance
+UPB Balance
 </h3>
 
 <h2 id="totalUPB">
@@ -666,10 +261,12 @@ $0
 </div>
 
 
+
+
 <div class="metric-card">
 
 <h3>
-🏦 Purchase Price
+Purchase Price
 </h3>
 
 <h2 id="purchasePrice">
@@ -679,10 +276,12 @@ $0
 </div>
 
 
+
+
 <div class="metric-card">
 
 <h3>
-📈 Target Yield
+Target Yield
 </h3>
 
 <h2 id="targetYield">
@@ -692,55 +291,162 @@ $0
 </div>
 
 
+
+
+<div class="metric-card">
+
+<h3>
+Discount Captured
+</h3>
+
+<h2 id="discountAmount">
+$0
+</h2>
+
+</div>
+
+
+
+
+<div class="metric-card">
+
+<h3>
+Monthly Cash Flow
+</h3>
+
+<h2 id="monthlyCashflow">
+$0
+</h2>
+
+</div>
+
+
+
+
+<div class="metric-card">
+
+<h3>
+Compound ROI
+</h3>
+
+<h2 id="compoundROI">
+0%
+</h2>
+
+</div>
+
+
+
+
+<div class="metric-card">
+
+<h3>
+RO'Lyfe Deal Score
+</h3>
+
+<h2 id="dealScore">
+--
+</h2>
+
+</div>
+
+
+
+</div>
+
+
 </section>
 
 
 
-<!-- PROPERTY RESEARCH HUB -->
 
-<section class="card">
+
+
+
+
+<!-- ==========================
+PROPERTY INTELLIGENCE HUB
+========================== -->
+
+
+<section id="property" class="section">
+
 
 <h2>
-🔎 Property Research Hub
+🔎 Property Intelligence Hub
 </h2>
 
 
-<input 
+
+<div class="card">
+
+
+<input
+
 id="propertyAddress"
+
 placeholder="Enter property address">
+
+
+
 
 
 <div class="button-grid">
 
 
 <button onclick="openZillow()">
+
 🏠 Zillow
+
 </button>
+
 
 
 <button onclick="openRedfin()">
+
 🏡 Redfin
+
 </button>
+
 
 
 <button onclick="openRealtor()">
-📍 Realtor
+
+🔑 Realtor
+
 </button>
+
+
 
 
 <button onclick="openPropWire()">
+
 📊 PropWire
+
 </button>
+
+
 
 
 <button onclick="openOPA()">
+
 🏛 Philadelphia OPA
+
 </button>
+
+
 
 
 <button onclick="openPropertyChecker()">
-📄 Property Checker
+
+📍 Property Checker
+
 </button>
+
+
+
+</div>
+
 
 
 </div>
@@ -750,105 +456,181 @@ placeholder="Enter property address">
 
 
 
-<!-- NOTE ANALYZER -->
 
-<section class="card">
+
+
+
+
+<!-- ==========================
+NOTE ANALYZER
+========================== -->
+
+
+<section id="notes" class="section">
+
 
 <h2>
-📄 Note Analyzer
+📄 Note Acquisition Analyzer
 </h2>
 
 
-<div class="form-grid">
+
+<div class="card">
 
 
-<input 
+<div class="input-grid">
+
+
+<input
 id="noteUPB"
 placeholder="Current UPB">
 
 
-<input 
+<input
 id="notePurchase"
 placeholder="Purchase Price">
 
 
-<input 
+<input
 id="noteRate"
 placeholder="Interest Rate %">
 
 
-<input 
+<input
 id="notePayment"
 placeholder="Monthly Payment">
 
 
-<input 
+<input
 id="notePayments"
 placeholder="Remaining Payments">
 
 
+
 </div>
 
 
-<button 
+
+
+<button
+
 class="glow-btn"
+
 onclick="analyzeNote()">
 
-🧠 Analyze Note
+
+🧠 RUN NOTE ANALYSIS
+
 
 </button>
 
 
-<div id="noteResult">
+
+
+<div
+
+id="noteResults"
+
+class="result-box">
+
+
+Waiting for analysis...
+
 
 </div>
 
 
-  </section>
 
-  <!-- ROI & COMPOUND ENGINE -->
 
-<section class="card">
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ==========================
+ROI COMPOUND ENGINE
+========================== -->
+
+
+<section class="section">
+
 
 <h2>
 📈 ROI & Compound Wealth Engine
 </h2>
 
 
-<div class="form-grid">
 
-<input 
+<div class="card">
+
+
+<div class="input-grid">
+
+
+<input
 id="investmentAmount"
 placeholder="Investment Amount">
 
 
-<input 
+
+<input
 id="monthlyCashflow"
 placeholder="Monthly Cash Flow">
 
 
-<input 
+
+<input
 id="roiYears"
-placeholder="Years">
+placeholder="Investment Years">
 
 
-<input 
+
+<input
 id="annualGrowth"
 placeholder="Annual Growth %">
+
+
 
 </div>
 
 
-<button 
+
+
+<button
+
 class="glow-btn"
+
 onclick="calculateCompoundROI()">
 
-🚀 Calculate Compound ROI
+
+🚀 CALCULATE COMPOUND ROI
+
 
 </button>
 
 
-<div id="roiResult">
+
+
+<div
+
+id="roiResult"
+
+class="result-box">
+
+
+No calculation yet.
+
+
+</div>
+
+
 
 </div>
 
@@ -858,25 +640,37 @@ onclick="calculateCompoundROI()">
 
 
 
-<!-- THREE TIER OFFER ENGINE -->
 
-<section class="card">
+
+<!-- NEXT PART CONTINUES HERE -->
+
+<!-- ==========================
+THREE TIER CREATIVE OFFER ENGINE
+========================== -->
+
+
+<section id="offers" class="section">
+
 
 <h2>
 🏠 Three Tier Creative Offer Engine
 </h2>
 
 
-<div class="form-grid">
+<div class="card">
 
 
-<input 
+<div class="input-grid">
+
+
+<input
 id="offerARV"
 value="250000"
-placeholder="ARV">
+placeholder="Property ARV">
 
 
 <select id="offerType">
+
 
 <option value="cash">
 💵 All Cash Offer
@@ -892,53 +686,95 @@ placeholder="ARV">
 🏦 Seller Financing Offer
 </option>
 
+
 </select>
 
 
 
-<input 
+
+<input
 id="cashPercent"
 value="50"
-placeholder="Cash % ARV">
+placeholder="Cash Offer % ARV">
 
 
-<input 
+
+<input
 id="carryPercent"
 value="65"
 placeholder="Seller Carry % ARV">
 
 
-<input 
+
+<input
+id="financePercent"
+value="75"
+placeholder="Seller Finance % ARV">
+
+
+
+<input
 id="downPayment"
 value="5"
 placeholder="Down Payment %">
 
 
-<input 
+
+<input
 id="interestRate"
 value="5"
 placeholder="Interest Rate %">
 
 
-<input 
-id="loanYears"
-value="4"
+
+<input
+id="balloonYears"
+value="5"
 placeholder="Balloon Years">
+
+
+
+<input
+id="amortizationYears"
+value="30"
+placeholder="Amortization Years">
+
 
 
 </div>
 
 
-<button 
+
+
+
+<button
+
 class="glow-btn"
+
 onclick="calculateCreativeOffer()">
 
-💡 Build Offer Structure
+
+💡 BUILD OFFER STRUCTURE
+
 
 </button>
 
 
-<div id="offerResult">
+
+
+<div
+
+id="offerResult"
+
+class="result-box">
+
+
+Waiting for offer structure...
+
+
+</div>
+
+
 
 </div>
 
@@ -949,62 +785,281 @@ onclick="calculateCreativeOffer()">
 
 
 
-<!-- AI UNDERWRITING -->
 
-<section class="card ai-box">
+
+
+<!-- ==========================
+OVERAGE & EXIT STRATEGY ENGINE
+========================== -->
+
+
+<section class="section">
 
 
 <h2>
-🤖 AI Underwriting Layer
+📊 Overage & Exit Strategy Calculator
 </h2>
 
 
+
+<div class="card">
+
+
+<div class="input-grid">
+
+
+<input
+id="salePrice"
+placeholder="Future Sale Price">
+
+
+
+<input
+id="originalDebt"
+placeholder="Original Debt">
+
+
+
+<input
+id="repairCost"
+placeholder="Repairs">
+
+
+
+<input
+id="holdingCosts"
+placeholder="Holding Costs">
+
+
+
+<input
+id="sellingCosts"
+placeholder="Selling Costs %">
+
+
+
+</div>
+
+
+
+
+<button
+
+class="glow-btn"
+
+onclick="calculateOverage()">
+
+
+📈 Calculate Overage
+
+
+</button>
+
+
+
+
+<div
+id="overageResult"
+class="result-box">
+
+
+No calculation yet.
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ==========================
+REHAB + ARV ENGINE
+========================== -->
+
+
+<section class="section">
+
+
+<h2>
+🔨 Rehab ARV Calculator
+</h2>
+
+
+
+<div class="card">
+
+
+<div class="input-grid">
+
+
+<input
+id="purchasePrice"
+placeholder="Purchase Price">
+
+
+
+<input
+id="rehabCost"
+placeholder="Rehab Budget">
+
+
+
+<input
+id="afterRepairValue"
+placeholder="ARV">
+
+
+
+<input
+id="loanAmount"
+placeholder="Loan Amount">
+
+
+
+</div>
+
+
+
+
+<button
+
+class="glow-btn"
+
+onclick="calculateRehabARV()">
+
+
+🏗 Analyze Project
+
+
+</button>
+
+
+
+
+<div
+
+id="rehabResult"
+
+class="result-box">
+
+
+Waiting for analysis...
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ==========================
+AI UNDERWRITING LAYER
+========================== -->
+
+
+<section class="section ai-box">
+
+
+<h2>
+🤖 RO'Lyfe AI Underwriting Engine
+</h2>
+
+
+
 <p>
-RO'Lyfe Risk Engine analyzes:
+
+Analyzes:
+
 </p>
 
 
+
 <ul>
+
 
 <li>
 Purchase Price vs ARV
 </li>
 
+
 <li>
-Loan-To-Value Risk
+LTV Exposure
 </li>
+
 
 <li>
 Yield Potential
 </li>
 
+
 <li>
 Cash Flow Strength
 </li>
+
 
 <li>
 Exit Strategy
 </li>
 
+
 <li>
-Investor Fit
+Investor Placement Fit
 </li>
+
 
 </ul>
 
 
-<button 
+
+
+
+<button
+
 class="glow-btn"
+
 onclick="runAIUnderwriter()">
 
-🧠 Run AI Deal Decision
+
+🧠 RUN AI DEAL DECISION
+
 
 </button>
 
 
-<div id="aiDecision">
+
+
+<div
+
+id="aiDecision"
+
+class="result-box">
+
+
+Awaiting underwriting...
+
 
 </div>
+
 
 
 </section>
@@ -1014,16 +1069,27 @@ onclick="runAIUnderwriter()">
 
 
 
-<!-- PORTFOLIO DASHBOARD -->
 
-<section class="card">
+
+<!-- ==========================
+PORTFOLIO TABLE
+========================== -->
+
+
+<section class="section">
+
 
 <h2>
-📚 Portfolio Command Center
+📚 Note Portfolio
 </h2>
 
 
+
+<div class="card">
+
+
 <table>
+
 
 <thead>
 
@@ -1033,102 +1099,42 @@ onclick="runAIUnderwriter()">
 ID
 </th>
 
+
 <th>
 County
 </th>
+
 
 <th>
 UPB
 </th>
 
+
 <th>
 Yield
 </th>
+
 
 <th>
 Status
 </th>
 
+
 </tr>
+
 
 </thead>
 
 
+
 <tbody id="portfolioTable">
+
 
 </tbody>
 
 
+
 </table>
-
-
-</section>
-
-
-
-
-
-
-<!-- FUNDING HUB -->
-
-<section class="card">
-
-<h2>
-💰 Lending & Funding Hub
-</h2>
-
-
-<div class="button-grid">
-
-
-<a href="https://form.jotform.com/261416399941062" target="_blank">
-
-<button>
-COGO Pre Application
-</button>
-
-</a>
-
-
-
-<a href="https://www.borrowersviewcentral.com/portal/applynew?id=LCS" target="_blank">
-
-<button>
-Hard Money / DSCR Application
-</button>
-
-</a>
-
-
-
-<a href="https://rootoflyfe.blnsoftware.com/" target="_blank">
-
-<button>
-RO'Lyfe Underwriting Portal
-</button>
-
-</a>
-
-
-
-<a href="https://www.nationalcorporatecredit.com/real-estate/?id=1820217000190862001" target="_blank">
-
-<button>
-Business Funding Application
-</button>
-
-</a>
-
-
-
-<a href="https://portal.asapcreditrepairusa.com/self-signup/RichardsonLegagneur28158" target="_blank">
-
-<button>
-ASAP Credit Repair
-</button>
-
-</a>
-
 
 
 </div>
@@ -1141,9 +1147,105 @@ ASAP Credit Repair
 
 
 
-<!-- DOCUMENT VAULT -->
+<!-- NEXT PART CONTINUES HERE -->
 
-<section class="card">
+    <!-- ==========================
+FUNDING & CAPITAL HUB
+========================== -->
+
+
+<section id="funding" class="section">
+
+
+<h2>
+🏦 Lending & Funding Command Center
+</h2>
+
+
+
+<div class="card">
+
+
+<div class="button-grid">
+
+
+<a href="https://form.jotform.com/261416399941062" target="_blank">
+
+<button>
+🏦 COGO Loan Application
+</button>
+
+</a>
+
+
+
+
+<a href="https://www.borrowersviewcentral.com/portal/applynew?id=LCS" target="_blank">
+
+<button>
+💰 Hard Money / DSCR Application
+</button>
+
+</a>
+
+
+
+
+<a href="https://rootoflyfe.blnsoftware.com/" target="_blank">
+
+<button>
+🧠 RO'Lyfe Underwriting Portal
+</button>
+
+</a>
+
+
+
+
+<a href="https://www.nationalcorporatecredit.com/real-estate/?id=1820217000190862001" target="_blank">
+
+<button>
+🏢 Business Funding Application
+</button>
+
+</a>
+
+
+
+
+<a href="https://portal.asapcreditrepairusa.com/self-signup/RichardsonLegagneur28158" target="_blank">
+
+<button>
+📈 Credit Optimization
+</button>
+
+</a>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+DOCUMENT VAULT
+========================== -->
+
+
+<section class="section">
 
 
 <h2>
@@ -1151,25 +1253,32 @@ ASAP Credit Repair
 </h2>
 
 
+
+<div class="card">
+
+
 <div class="button-grid">
+
 
 
 <a href="docs/note-due-diligence-checklist.pdf" target="_blank">
 
 <button>
-✅ Note Checklist
+✅ Note Due Diligence Checklist
 </button>
 
 </a>
+
 
 
 <a href="docs/note-analysis-template.pdf" target="_blank">
 
 <button>
-📄 Note Analysis
+📄 Note Analysis Template
 </button>
 
 </a>
+
 
 
 <a href="docs/investor-summary-template.pdf" target="_blank">
@@ -1181,6 +1290,7 @@ ASAP Credit Repair
 </a>
 
 
+
 <a href="docs/broker-fee-agreement-template.pdf" target="_blank">
 
 <button>
@@ -1188,6 +1298,7 @@ ASAP Credit Repair
 </button>
 
 </a>
+
 
 
 <a href="docs/hard-money-underwriting-guide.pdf" target="_blank">
@@ -1199,51 +1310,9 @@ ASAP Credit Repair
 </a>
 
 
-</div>
-
-
-  </section>
-
-  <!-- INVESTOR PACKAGE CENTER -->
-
-<section class="card">
-
-<h2>
-📦 Investor Package Generator
-</h2>
-
-
-<p>
-Create a professional deal package for investors, lenders, note buyers, and capital partners.
-</p>
-
-
-<div class="button-grid">
-
-
-<button 
-class="glow-btn"
-onclick="generateDealReport()">
-
-⬇ Download Deal Report
-
-</button>
-
-
-
-<button 
-class="glow-btn"
-onclick="sendDealEmail()">
-
-📧 Email Package
-
-</button>
-
 
 </div>
 
-
-<div id="packageStatus">
 
 </div>
 
@@ -1254,66 +1323,214 @@ onclick="sendDealEmail()">
 
 
 
-<!-- RO'LYFE QUICK LINKS -->
 
-<section class="card">
+
+
+
+<!-- ==========================
+INVESTOR PACKAGE CENTER
+========================== -->
+
+
+<section id="investors" class="section">
 
 
 <h2>
-🔗 RO'Lyfe Capital Resources
+📦 Investor Placement Engine
 </h2>
+
+
+
+
+<div class="card">
+
+
+<p>
+
+Generate professional deal packages for:
+
+</p>
+
+
+<ul>
+
+<li>
+Private Lenders
+</li>
+
+<li>
+Note Buyers
+</li>
+
+<li>
+Equity Partners
+</li>
+
+<li>
+Capital Investors
+</li>
+
+</ul>
+
+
 
 
 <div class="button-grid">
 
 
-<a href="https://affiliate.nationalcorporatecredit.com/ncc/uploads" target="_blank">
 
-<button>
-📤 Expert Document Upload
+<button
+
+class="glow-btn"
+
+onclick="generateDealReport()">
+
+
+⬇ DOWNLOAD DEAL REPORT
+
+
 </button>
 
-</a>
 
+
+
+
+<button
+
+class="glow-btn"
+
+onclick="sendDealEmail()">
+
+
+📧 EMAIL PACKAGE
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+<div id="packageStatus" class="result-box">
+
+Ready
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+PROPERTY DATA RESOURCES
+========================== -->
+
+
+<section class="section">
+
+
+<h2>
+🌎 Property Intelligence Resources
+</h2>
+
+
+
+<div class="card">
+
+
+<div class="button-grid">
 
 
 <a href="https://property.phila.gov" target="_blank">
 
 <button>
+
 🏛 Philadelphia Property Search
+
 </button>
 
 </a>
+
 
 
 
 <a href="https://opainquiry.phila.gov" target="_blank">
 
 <button>
-🏠 Philadelphia OPA
+
+🏠 OPA Owner Lookup
+
 </button>
 
 </a>
+
 
 
 
 <a href="https://pennsylvania.propertychecker.com" target="_blank">
 
 <button>
-📄 Property Ownership Search
+
+📍 Property Checker
+
 </button>
 
 </a>
 
 
 
-<a href="https://systeme.io/?sa=sa024361003597d08c1ddbe15791a7b8208556a789" target="_blank">
+<a href="https://www.zillow.com" target="_blank">
 
 <button>
-🚀 RO'Lyfe System
+
+🏠 Zillow
+
 </button>
 
 </a>
+
+
+
+
+<a href="https://www.redfin.com" target="_blank">
+
+<button>
+
+🏡 Redfin
+
+</button>
+
+</a>
+
+
+
+<a href="https://www.realtor.com" target="_blank">
+
+<button>
+
+🔑 Realtor
+
+</button>
+
+</a>
+
+
+
+</div>
 
 
 </div>
@@ -1326,44 +1543,59 @@ onclick="sendDealEmail()">
 
 
 
-<!-- EMAIL CONFIGURATION -->
-
-<section class="card">
-
-
-<h2>
-📧 Deal Submission Settings
-</h2>
-
-
-<p>
-Default Deal Package Email:
-</p>
-
-
-<h3>
-richman@rootoflyfe.com
-</h3>
-
-
-<p>
-Alternate:
-</p>
-
-
-<h3>
-richprivatelender@gmail.com
-</h3>
-
-
-</section>
 
 
 
+<!-- ==========================
+RO'LYFE CONFIGURATION
+========================== -->
+
+
+<script>
+
+
+const RO_LYFE_CONFIG = {
+
+
+company:
+"Root Of Lyfe Holdings LLC",
+
+
+brand:
+"RO'Lyfe NoteForge™",
+
+
+primaryEmail:
+"richman@rootoflyfe.com",
+
+
+secondaryEmail:
+"richprivatelender@gmail.com",
+
+
+version:
+"Enterprise Command Center v2.0",
+
+
+database:
+"data/notes.json"
+
+
+};
+
+
+</script>
 
 
 
-<!-- MODULE ENGINE LOADER -->
+
+
+
+
+
+<!-- ==========================
+MODULES
+========================== -->
 
 
 <script src="modules/ai-underwriter.js"></script>
@@ -1380,7 +1612,14 @@ richprivatelender@gmail.com
 
 
 
-<!-- CALCULATOR ENGINE -->
+
+
+
+
+
+<!-- ==========================
+CALCULATORS
+========================== -->
 
 
 <script src="calculators/note-yield-calculator.js"></script>
@@ -1412,37 +1651,6 @@ richprivatelender@gmail.com
 
 
 
-<!-- DATABASE -->
-
-<script>
-
-const RO_LYFE_CONFIG = {
-
-company:
-"Root Of Lyfe Holdings LLC",
-
-brand:
-"RO'Lyfe NoteForge™",
-
-email:
-"richman@rootoflyfe.com",
-
-backupEmail:
-"richprivatelender@gmail.com",
-
-version:
-"Enterprise v1.0",
-
-database:
-"data/notes.json"
-
-};
-
-
-</script>
-
-
-
 
 <!-- MAIN ENGINE -->
 
@@ -1450,12 +1658,15 @@ database:
 
 
 
-</div>
+<!-- NEXT PART CONTINUES HERE -->
 
 
-<!-- FOOTER -->
+<!-- ==========================
+RO'LYFE CONTROL PANEL FOOTER
+========================== -->
 
-<footer>
+
+<footer class="footer">
 
 
 <h3>
@@ -1469,97 +1680,181 @@ Rooted in Access. Built for Growth.
 
 
 <p>
-Note Acquisition • Creative Finance • Investor Placement • Underwriting
+Note Acquisition • Creative Finance • Investor Placement • AI Underwriting
 </p>
 
 
 <p>
-© 2026 RO'Lyfe Holdings LLC
+Enterprise Command Center v2.0
 </p>
 
 
 </footer>
 
 
+
+
+
+</main>
+
+</div>
+
+
+
+
+
+<!-- ==========================
+SESSION CONTROL
+========================== -->
+
+
 <script>
 
-function loginUser(){
 
-    const email = document.getElementById("loginEmail").value;
+// Auto-login check
 
-    if(email === ""){
-
-        alert("Enter email first");
-
-        return;
-
-    }
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
 
-    document.getElementById("loginScreen")
-    .classList.add("hidden");
-
-
-    document.getElementById("app")
-    .classList.remove("hidden");
-
-
-    localStorage.setItem(
-        "rolyfeLoggedIn",
-        "true"
-    );
-
-
-}
+const session =
+localStorage.getItem(
+"rolyfeLoggedIn"
+);
 
 
 
-function logoutUser(){
-
-    localStorage.removeItem(
-        "rolyfeLoggedIn"
-    );
+if(session === "true"){
 
 
-    document.getElementById("loginScreen")
-    .classList.remove("hidden");
+document
+.getElementById("loginScreen")
+.classList.add("hidden");
 
 
-    document.getElementById("app")
-    .classList.add("hidden");
+
+document
+.getElementById("app")
+.classList.remove("hidden");
 
 
 }
 
 
 
-window.onload=function(){
-
-    if(
-    localStorage.getItem("rolyfeLoggedIn")
-    === "true"
-    ){
-
-        document
-        .getElementById("loginScreen")
-        .classList.add("hidden");
+});
 
 
-        document
-        .getElementById("app")
-        .classList.remove("hidden");
 
-    }
+
+
+// Mobile navigation
+
+function toggleMenu(){
+
+
+const menu =
+document.getElementById(
+"mobileMenu"
+);
+
+
+
+if(menu){
+
+menu.classList.toggle(
+"active"
+);
 
 }
+
+
+}
+
+
+
+
+function scrollSection(id){
+
+
+const section =
+document.getElementById(id);
+
+
+
+if(section){
+
+section.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+
+
+}
+
+
+
+
+
+// Simple theme switch
+
+function toggleTheme(){
+
+
+document.body.classList.toggle(
+"light-mode"
+);
+
+
+localStorage.setItem(
+
+"rolyfeTheme",
+
+document.body.className
+
+);
+
+
+}
+
+
+
+
+
+// Restore theme
+
+if(
+localStorage.getItem(
+"rolyfeTheme"
+)
+){
+
+
+document.body.className =
+localStorage.getItem(
+"rolyfeTheme"
+);
+
+
+}
+
 
 
 </script>
-    
-    
+
+
+
+
 
 </body>
 
-  </html>
 
-  
+</html>
+    
+
+    
