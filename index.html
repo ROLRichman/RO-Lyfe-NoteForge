@@ -1,1 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RO'Lyfe NoteForge™ | Note Acquisition OS</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+<header class="hero">
+
+<img src="assets/rolyfe-logo.png" class="logo">
+
+<h1>🏦 RO'Lyfe NoteForge™</h1>
+
+<p>
+Note Acquisition • Creative Finance • Investor Placement • Underwriting Engine
+</p>
+
+</header>
+
+
+
+<!-- DASHBOARD -->
+
+<section class="card">
+
+<h2>📊 Portfolio Dashboard</h2>
+
+
+<div class="grid">
+
+<div>
+<h3>Total Notes</h3>
+<p id="totalNotes">0</p>
+</div>
+
+
+<div>
+<h3>UPB Balance</h3>
+<p id="totalUPB">$0</p>
+</div>
+
+
+<div>
+<h3>Purchase Price</h3>
+<p id="purchasePrice">$0</p>
+</div>
+
+
+<div>
+<h3>Target Yield</h3>
+<p id="yield">0%</p>
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- PROPERTY SEARCH -->
+
+<section class="card">
+
+<h2>🔎 Property Research Hub</h2>
+
+
+<input 
+id="searchAddress"
+placeholder="Enter property address">
+
+
+<div class="button-grid">
+
+<button onclick="searchZillow()">
+🏠 Zillow
+</button>
+
+
+<button onclick="searchRedfin()">
+🏡 Redfin
+</button>
+
+
+<button onclick="searchRealtor()">
+📍 Realtor
+</button>
+
+
+<button onclick="searchPropWire()">
+📊 PropWire
+</button>
+
+
+<button onclick="searchOPA()">
+🏛 Philadelphia OPA
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- NOTE ANALYZER -->
+
+<section class="card">
+
+
+<h2>📄 Note Analyzer</h2>
+
+
+<div class="grid">
+
+
+<input id="noteUPB" placeholder="Current UPB">
+
+
+<input id="notePrice" placeholder="Purchase Price">
+
+
+<input id="noteRate" placeholder="Interest Rate %">
+
+
+<input id="notePayment" placeholder="Monthly Payment">
+
+
+<input id="noteTerm" placeholder="Remaining Payments">
+
+
+</div>
+
+
+<button onclick="analyzeNote()">
+Analyze Note
+</button>
+
+
+<div id="noteResults"></div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ROI ENGINE -->
+
+
+<section class="card">
+
+
+<h2>📈 ROI & Compound Engine</h2>
+
+
+<input id="investment"
+placeholder="Investment Amount">
+
+
+<input id="monthlyIncome"
+placeholder="Monthly Cash Flow">
+
+
+<input id="years"
+placeholder="Years">
+
+
+<button onclick="calculateROI()">
+Calculate ROI
+</button>
+
+
+<div id="roiResults"></div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- CREATIVE OFFER ENGINE -->
+
+
+<section class="card">
+
+
+<h2>🏠 Three Tier Offer Engine</h2>
+
+
+<label>ARV</label>
+
+<input id="arvOffer"
+value="250000">
+
+
+<select id="offerType"
+onchange="calculateOffer()">
+
+
+
+<option value="cash">
+💵 All Cash Offer (50% ARV)
+</option>
+
+
+<option value="carry">
+🤝 Seller Carry (65% ARV)
+</option>
+
+
+<option value="finance">
+📄 Seller Financing (75% ARV)
+</option>
+
+
+</select>
+
+
+<div id="offerResults"></div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- HARD MONEY -->
+
+<section class="card">
+
+
+<h2>💰 Lending & Funding Hub</h2>
+
+
+<button onclick="openLink('https://form.jotform.com/261416399941062')">
+COGO Loan Application
+</button>
+
+
+
+<button onclick="openLink('https://www.borrowersviewcentral.com/portal/applynew?id=LCS')">
+Hard Money / DSCR Application
+</button>
+
+
+
+<button onclick="openLink('https://rootoflyfe.blnsoftware.com/')">
+RO'Lyfe Underwriting Portal
+</button>
+
+
+
+<button onclick="openLink('https://www.nationalcorporatecredit.com/real-estate/?id=1820217000190862001')">
+Business Funding
+</button>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- DOCUMENT CENTER -->
+
+
+<section class="card">
+
+
+<h2>📚 Due Diligence Vault</h2>
+
+
+<button onclick="openLink('docs/note-due-diligence-checklist.pdf')">
+Checklist
+</button>
+
+
+<button onclick="openLink('docs/note-analysis-template.pdf')">
+Note Analysis
+</button>
+
+
+<button onclick="openLink('docs/investor-summary-template.pdf')">
+Investor Summary
+</button>
+
+
+<button onclick="openLink('docs/broker-fee-agreement-template.pdf')">
+Broker Agreement
+</button>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- INVESTOR PACKAGE -->
+
+
+<section class="card">
+
+
+<h2>📦 Investor Package</h2>
+
+
+<p>
+Generate a report and send to investors, lenders, or capital partners.
+</p>
+
+
+<button onclick="generatePDF()">
+⬇ Download Deal Report
+</button>
+
+
+<button onclick="emailPackage()">
+📧 Email Package
+</button>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- SAMPLE NOTES -->
+
+
+<section class="card">
+
+
+<h2>🗂 Sample Note Tape</h2>
+
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>County</th>
+<th>UPB</th>
+<th>Yield</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="noteTable">
+
+</tbody>
+
+
+</table>
+
+
+</section>
+
+
+
+
+<footer>
+
+<p>
+RO'Lyfe Holdings LLC™  
+<br>
+Rooted in Access. Built for Growth.
+<br>
+richman@rootoflyfe.com
+</p>
+
+</footer>
+
+
+
+</div>
+
+
+
+
+
+<!-- CALCULATOR ENGINES -->
+
+
+<script src="calculators/note-yield-calculator.js"></script>
+
+<script src="calculators/ltv-calculator.js"></script>
+
+<script src="calculators/discount-calculator.js"></script>
+
+<script src="calculators/cashflow-calculator.js"></script>
+
+<script src="calculators/compound-roi-calculator.js"></script>
+
+<script src="calculators/irr-calculator.js"></script>
+
+<script src="calculators/overage-calculator.js"></script>
+
+<script src="calculators/rehab-arv-calculator.js"></script>
+
+<script src="calculators/deal-score-engine.js"></script>
+
+<script src="calculators/creative-offer-calculator.js"></script>
+
+<script src="calculators/seller-carry-calculator.js"></script>
+
+<script src="calculators/balloon-payment-calculator.js"></script>
+
+<script src="calculators/payment-calculator.js"></script>
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+  </html>
