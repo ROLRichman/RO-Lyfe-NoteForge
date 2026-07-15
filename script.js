@@ -1,3 +1,36 @@
+function loginUser(){
+
+    let email = document.getElementById("loginEmail").value.trim();
+
+    if(!email){
+        alert("Enter email first");
+        return;
+    }
+
+    document.getElementById("loginScreen").style.display = "none";
+
+    document.getElementById("app").classList.remove("hidden");
+
+    localStorage.setItem(
+        "rolyfeUser",
+        email
+    );
+
+    console.log("Logged in:", email);
+}
+
+
+
+function logoutUser(){
+
+    localStorage.removeItem("rolyfeUser");
+
+    document.getElementById("loginScreen").style.display = "flex";
+
+    document.getElementById("app").classList.add("hidden");
+
+}
+
 // ==========================================
 // RO'Lyfe NoteForge™
 // Main Application Engine
