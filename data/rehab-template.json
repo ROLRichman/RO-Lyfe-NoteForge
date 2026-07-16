@@ -1,122 +1,85 @@
-[
-  {
-    "item": 264,
-    "description": "Architect",
-    "cost": 0
-  },
-  {
-    "item": 160,
-    "description": "Asphalt & Paving",
-    "cost": 0
-  },
-  {
-    "item": 848,
-    "description": "Basement",
-    "cost": 0
-  },
-  {
-    "item": 740,
-    "description": "Bathroom Accessories / Mirror",
-    "cost": 0
-  },
-  {
-    "item": 840,
-    "description": "Bathroom Tile",
-    "cost": 0
-  },
-  {
-    "item": 704,
-    "description": "Drywall / Tape / Texture / Sheetrock",
-    "cost": 15000
-  },
-  {
-    "item": 213,
-    "description": "Dumpster",
-    "cost": 2000
-  },
-  {
-    "item": 354,
-    "description": "Electrical Labor",
-    "cost": 8000
-  },
-  {
-    "item": 600,
-    "description": "Exterior Doors",
-    "cost": 2500
-  },
-  {
-    "item": 710,
-    "description": "Flooring",
-    "cost": 15000
-  },
-  {
-    "item": 536,
-    "description": "Framing Labor",
-    "cost": 15000
-  },
-  {
-    "item": 650,
-    "description": "Heating-Air Conditioning (HVAC)",
-    "cost": 13000
-  },
-  {
-    "item": 712,
-    "description": "Interior Painting",
-    "cost": 3000
-  },
-  {
-    "item": 842,
-    "description": "Kitchen",
-    "cost": 20000
-  },
-  {
-    "item": 646,
-    "description": "Light Fixtures / Ceiling Fans",
-    "cost": 1200
-  },
-  {
-    "item": 186,
-    "description": "Permit Fees & Inspections",
-    "cost": 3000
-  },
-  {
-    "item": 360,
-    "description": "Plumbing Labor",
-    "cost": 18000
-  },
-  {
-    "item": 582,
-    "description": "Roofing",
-    "cost": 12000
-  },
-  {
-    "item": 552,
-    "description": "Siding",
-    "cost": 8000
-  },
-  {
-    "item": 614,
-    "description": "Sinks, Toilets, Tubs, Showers",
-    "cost": 3000
-  },
-  {
-    "item": 750,
-    "description": "Stairs / Railings",
-    "cost": 1000
-  },
-  {
-    "item": 510,
-    "description": "Structural",
-    "cost": 15000
-  },
-  {
-    "item": 412,
-    "description": "Water Hook-up / Water Heater",
-    "cost": 1300
-  },
-  {
-    "item": 618,
-    "description": "Windows",
-    "cost": 8000
-  }
-]
+{
+  "template": "RO'Lyfe COGO Rehab Template",
+  "version": "1.0",
+  "items": [
+    { "number": 264, "description": "Architect", "cost": 0 },
+    { "number": 160, "description": "Asphalt & Paving", "cost": 0 },
+    { "number": 848, "description": "Basement", "cost": 0 },
+    { "number": 740, "description": "Bathroom Accessories / Mirror", "cost": 0 },
+    { "number": 840, "description": "Bathroom Tile", "cost": 0 },
+    { "number": 550, "description": "Bathroom Vanity & Countertop", "cost": 0 },
+    { "number": 841, "description": "Bedroom Hardware", "cost": 0 },
+    { "number": 352, "description": "Carpentry Rough", "cost": 0 },
+    { "number": 700, "description": "Carpets", "cost": 0 },
+    { "number": 418, "description": "Ceiling Work", "cost": 0 },
+    { "number": 752, "description": "Closet / Shelves", "cost": 0 },
+    { "number": 430, "description": "Concrete Material", "cost": 0 },
+    { "number": 314, "description": "Contractor Contingency", "cost": 0 },
+    { "number": 382, "description": "Curbs / Gutters / Walkways", "cost": 0 },
+    { "number": 802, "description": "Decking / Porch / Patio", "cost": 0 },
+    { "number": 384, "description": "Demolition", "cost": 0 },
+    { "number": 492, "description": "Downspouts / Gutters", "cost": 0 },
+    { "number": 388, "description": "Driveway", "cost": 0 },
+    { "number": 704, "description": "Drywall / Tape / Texture / Sheetrock", "cost": 15000 },
+    { "number": 213, "description": "Dumpster", "cost": 2000 },
+    { "number": 672, "description": "Electrical Finish", "cost": 0 },
+    { "number": 354, "description": "Electrical Labor", "cost": 8000 },
+    { "number": 680, "description": "Electrical Rough", "cost": 0 },
+    { "number": 600, "description": "Exterior Doors", "cost": 2500 },
+    { "number": 706, "description": "Exterior Painting", "cost": 0 },
+    { "number": 490, "description": "Fascia / Soffit", "cost": 0 },
+    { "number": 708, "description": "Fencing", "cost": 0 },
+    { "number": 270, "description": "Final Cleanup / Staging", "cost": 0 },
+    { "number": 350, "description": "Finish Carpentry", "cost": 0 },
+    { "number": 744, "description": "Finish Hardware", "cost": 0 },
+    { "number": 400, "description": "Finish Labor / Site Work", "cost": 0 },
+    { "number": 644, "description": "Fire Alarms", "cost": 0 },
+    { "number": 464, "description": "Fireplace / Chimney", "cost": 0 },
+    { "number": 710, "description": "Flooring", "cost": 15000 },
+    { "number": 436, "description": "Foundation / Slab", "cost": 0 },
+    { "number": 536, "description": "Framing Labor", "cost": 15000 },
+    { "number": 534, "description": "Framing Lumber", "cost": 0 },
+    { "number": 820, "description": "Garage", "cost": 0 },
+    { "number": 602, "description": "Garage Door", "cost": 0 },
+    { "number": 724, "description": "Hardwood Floors", "cost": 0 },
+    { "number": 650, "description": "HVAC", "cost": 13000 },
+    { "number": 576, "description": "Insulation", "cost": 0 },
+    { "number": 606, "description": "Interior Doors", "cost": 0 },
+    { "number": 712, "description": "Interior Painting", "cost": 3000 },
+    { "number": 842, "description": "Kitchen", "cost": 20000 },
+    { "number": 770, "description": "Kitchen Appliances", "cost": 0 },
+    { "number": 530, "description": "Kitchen Cabinets", "cost": 0 },
+    { "number": 702, "description": "Kitchen Countertops", "cost": 0 },
+    { "number": 494, "description": "Kitchen Sink", "cost": 0 },
+    { "number": 398, "description": "Landscaping", "cost": 0 },
+    { "number": 844, "description": "Laundry Room", "cost": 0 },
+    { "number": 646, "description": "Light Fixtures", "cost": 1200 },
+    { "number": 714, "description": "Laminate / Vinyl", "cost": 0 },
+    { "number": 302, "description": "Management Fees", "cost": 0 },
+    { "number": 466, "description": "Masonry", "cost": 0 },
+    { "number": 608, "description": "Mirrors & Accessories", "cost": 0 },
+    { "number": 288, "description": "Miscellaneous", "cost": 0 },
+    { "number": 356, "description": "Other Labor", "cost": 0 },
+    { "number": 186, "description": "Permit Fees", "cost": 3000 },
+    { "number": 136, "description": "Plans", "cost": 0 },
+    { "number": 642, "description": "Plumbing Finish", "cost": 0 },
+    { "number": 360, "description": "Plumbing Labor", "cost": 18000 },
+    { "number": 654, "description": "Plumbing Rough", "cost": 0 },
+    { "number": 582, "description": "Roofing", "cost": 12000 },
+    { "number": 406, "description": "Septic / Sewer", "cost": 0 },
+    { "number": 552, "description": "Siding", "cost": 8000 },
+    { "number": 614, "description": "Bath Fixtures", "cost": 3000 },
+    { "number": 198, "description": "Environmental Testing", "cost": 0 },
+    { "number": 750, "description": "Stairs / Railings", "cost": 1000 },
+    { "number": 510, "description": "Structural", "cost": 15000 },
+    { "number": 718, "description": "Stucco & Plaster", "cost": 0 },
+    { "number": 324, "description": "Temporary Utilities", "cost": 0 },
+    { "number": 720, "description": "Tile Work", "cost": 0 },
+    { "number": 329, "description": "Trash Out", "cost": 0 },
+    { "number": 548, "description": "Trusses / Beams", "cost": 0 },
+    { "number": 416, "description": "Wall Work", "cost": 0 },
+    { "number": 722, "description": "Wall Coverings", "cost": 0 },
+    { "number": 412, "description": "Water Heater", "cost": 1300 },
+    { "number": 618, "description": "Windows", "cost": 8000 }
+  ]
+}
