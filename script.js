@@ -1,36 +1,90 @@
-// =====================================================
+// ============================================
 // RO'Lyfe NoteForge™
-// Capital Intelligence Operating Engine v2
+// Main Operating Engine
 // Root Of Lyfe Holdings LLC™
-// =====================================================
+// ============================================
 
 
-// =====================================================
-// GLOBAL DATABASE
-// =====================================================
+// ============================================
+// CONFIGURATION
+// ============================================
 
-let notes = [];
-let investors = [];
-let lenders = [];
-let deals = [];
+const RO_LYFE = {
+
+    company: "Root Of Lyfe Holdings LLC",
+
+    brand: "RO'Lyfe NoteForge™",
+
+    email: "richman@rootoflyfe.com",
+
+    backupEmail: "richprivatelender@gmail.com",
+
+    version: "Enterprise Command Center v2.0",
+
+    database: {
+        notes: "data/notes.json",
+        investors: "data/investors.json",
+        lenders: "data/lenders.json",
+        deals: "data/deals.json"
+    }
+
+};
 
 
-// =====================================================
-// LOGIN SYSTEM
-// =====================================================
+
+
+// ============================================
+// GLOBAL DATABASE MEMORY
+// ============================================
+
+let RO_DATA = {
+
+    notes: [],
+
+    investors: [],
+
+    lenders: [],
+
+    deals: []
+
+};
+
+
+
+
+// ============================================
+// LOGIN ENGINE
+// ============================================
+
 
 function loginUser(){
 
-    let email =
+
+    const email =
     document.getElementById("loginEmail").value.trim();
+
+
+    const password =
+    document.getElementById("loginPassword").value.trim();
+
 
 
     if(!email){
 
         alert("Enter email first");
+
         return;
 
     }
+
+
+
+    // Command center access
+
+    localStorage.setItem(
+        "rolyfeLoggedIn",
+        "true"
+    );
 
 
     localStorage.setItem(
@@ -39,83 +93,241 @@ function loginUser(){
     );
 
 
-    document.getElementById("loginScreen")
-    .style.display="none";
+
+    document
+    .getElementById("loginScreen")
+    .classList.add("hidden");
 
 
-    document.getElementById("app")
+
+    document
+    .getElementById("app")
     .classList.remove("hidden");
 
 
+
     console.log(
-        "RO'Lyfe User:",
+        "RO'Lyfe Access:",
         email
     );
+
+
+    initializeROLyfe();
+
 
 }
 
 
 
+
+// ============================================
+// LOGOUT
+// ============================================
+
+
 function logoutUser(){
+
+
+    localStorage.removeItem(
+        "rolyfeLoggedIn"
+    );
+
 
     localStorage.removeItem(
         "rolyfeUser"
     );
 
 
-    document.getElementById("loginScreen")
-    .style.display="flex";
+
+    document
+    .getElementById("loginScreen")
+    .classList.remove("hidden");
 
 
-    document.getElementById("app")
+
+    document
+    .getElementById("app")
     .classList.add("hidden");
+
 
 }
 
 
 
 
-// =====================================================
-// STARTUP ENGINE
-// =====================================================
+// ============================================
+// SESSION CHECK
+// ============================================
 
 
-window.onload=function(){
-
-    checkLogin();
-
-    loadDatabase();
-
-};
+function checkSession(){
 
 
-
-function checkLogin(){
-
-    let user =
+    const session =
     localStorage.getItem(
-        "rolyfeUser"
+        "rolyfeLoggedIn"
     );
 
 
-    if(user){
 
-        document.getElementById("loginScreen")
-        .style.display="none";
+    if(session === "true"){
 
 
-        document.getElementById("app")
-        .classList.remove("hidden");
+        document
+        .getElementById("loginScreen")
+        ?.classList.add("hidden");
+
+
+
+        document
+        .getElementById("app")
+        ?.classList.remove("hidden");
+
+
+        initializeROLyfe();
+
 
     }
+
 
 }
 
 
 
-// =====================================================
-// JSON DATABASE LOADER
-// =====================================================
+
+
+
+// ============================================
+// THEME ENGINE
+// ============================================
+
+
+function toggleTheme(){
+
+
+    document.body.classList.toggle(
+        "light-mode"
+    );
+
+
+    localStorage.setItem(
+
+        "rolyfeTheme",
+
+        document.body.className
+
+    );
+
+
+}
+
+
+
+
+function loadTheme(){
+
+
+    const savedTheme =
+    localStorage.getItem(
+        "rolyfeTheme"
+    );
+
+
+    if(savedTheme){
+
+        document.body.className =
+        savedTheme;
+
+    }
+
+
+}
+
+
+
+
+
+
+// ============================================
+// MOBILE MENU
+// ============================================
+
+
+function toggleMenu(){
+
+
+    const menu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+
+    if(menu){
+
+        menu.classList.toggle(
+            "active"
+        );
+
+    }
+
+
+}
+
+
+
+
+function scrollSection(id){
+
+
+    const section =
+    document.getElementById(id);
+
+
+    if(section){
+
+        section.scrollIntoView({
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+
+}
+
+
+
+
+// ============================================
+// STARTUP ENGINE
+// ============================================
+
+
+async function initializeROLyfe(){
+
+
+    console.log(
+        "Launching RO'Lyfe NoteForge™..."
+    );
+
+
+    loadTheme();
+
+
+    await loadDatabase();
+
+
+    updateDashboard();
+
+
+}
+
+
+
+// ============================================
+// LOAD JSON DATABASE
+// ============================================
 
 
 async function loadDatabase(){
@@ -124,795 +336,69 @@ async function loadDatabase(){
 try{
 
 
-let noteData =
-await fetch(
-"data/notes.json"
-);
+const [
+notes,
+investors,
+lenders,
+deals
+
+] = await Promise.all([
 
 
-notes =
-await noteData.json();
+fetch(RO_LYFE.database.notes)
+.then(r=>r.json()),
 
 
-
-let investorData =
-await fetch(
-"data/investors.json"
-);
+fetch(RO_LYFE.database.investors)
+.then(r=>r.json()),
 
 
-investors =
-await investorData.json();
+fetch(RO_LYFE.database.lenders)
+.then(r=>r.json()),
 
 
-
-let lenderData =
-await fetch(
-"data/lenders.json"
-);
+fetch(RO_LYFE.database.deals)
+.then(r=>r.json())
 
 
-lenders =
-await lenderData.json();
+]);
 
 
 
-updateDashboard();
+RO_DATA.notes = notes;
 
-renderNotes();
+RO_DATA.investors = investors;
+
+RO_DATA.lenders = lenders;
+
+RO_DATA.deals = deals;
 
 
 
 console.log(
-"RO'Lyfe Database Loaded"
+"Database Loaded",
+RO_DATA
 );
+
+
+
+renderPortfolio();
 
 
 
 }
+
 catch(error){
 
+
 console.log(
-"Database loading:",
+"Database loading error:",
 error
 );
 
-}
-
-
 
 }
 
 
 
-
-// =====================================================
-// PORTFOLIO DASHBOARD
-// =====================================================
-
-
-function updateDashboard(){
-
-
-if(!notes.length)
-return;
-
-
-
-let totalUPB =
-notes.reduce(
-(total,n)=>
-total + Number(n.upb || 0),
-0
-);
-
-
-
-let totalPurchase =
-notes.reduce(
-(total,n)=>
-total + Number(n.salePrice || 0),
-0
-);
-
-
-
-let monthly =
-notes.reduce(
-(total,n)=>
-total + Number(n.payment || 0),
-0
-);
-
-
-
-document.getElementById(
-"totalNotes"
-).innerHTML =
-notes.length;
-
-
-
-document.getElementById(
-"totalUPB"
-).innerHTML =
-money(totalUPB);
-
-
-
-document.getElementById(
-"purchasePrice"
-).innerHTML =
-money(totalPurchase);
-
-
-
-document.getElementById(
-"targetYield"
-).innerHTML =
-"12.5%";
-
-
-
-document.getElementById(
-"monthlyCashflow"
-).innerHTML =
-money(monthly);
-
-
-
 }
-
-
-
-function money(number){
-
-return "$"+
-Number(number)
-.toLocaleString();
-
-}
-
-
-
-
-
-// =====================================================
-// NOTE TABLE
-// =====================================================
-
-
-function renderNotes(){
-
-
-let table =
-document.getElementById(
-"noteTable"
-);
-
-
-
-if(!table)
-return;
-
-
-
-table.innerHTML="";
-
-
-
-notes.forEach(note=>{
-
-
-table.innerHTML += `
-
-<tr>
-
-<td>${note.id || "-"}</td>
-
-<td>${note.county || "-"}</td>
-
-<td>
-${money(note.upb)}
-</td>
-
-
-<td>
-${note.yield || "12.5"}%
-</td>
-
-
-</tr>
-
-`;
-
-
-});
-
-
-}
-
-
-
-
-
-// =====================================================
-// PROPERTY INTELLIGENCE HUB
-// =====================================================
-
-
-function getPropertyAddress(){
-
-
-return document
-.getElementById(
-"propertyAddress"
-)
-.value.trim();
-
-
-}
-
-
-
-function openZillow(){
-
-let address=getPropertyAddress();
-
-if(!address)
-return alert("Enter property address");
-
-
-window.open(
-
-"https://www.zillow.com/homes/"+
-encodeURIComponent(address)+
-"_rb/"
-
-);
-
-
-}
-
-
-
-function openRedfin(){
-
-let address=getPropertyAddress();
-
-
-window.open(
-
-"https://www.redfin.com/stingray/do/location-autocomplete?location="+
-encodeURIComponent(address)
-
-);
-
-
-}
-
-
-
-
-function openRealtor(){
-
-let address=getPropertyAddress();
-
-
-window.open(
-
-"https://www.realtor.com/realestateandhomes-search/"+
-encodeURIComponent(address)
-
-);
-
-
-}
-
-
-
-function openPropWire(){
-
-window.open(
-"https://www.propwire.com/"
-);
-
-}
-
-
-
-
-function openOPA(){
-
-window.open(
-"https://property.phila.gov/"
-);
-
-}
-
-
-
-
-function openPropertyChecker(){
-
-window.open(
-"https://pennsylvania.propertychecker.com/"
-);
-
-}
-
-
-
-
-// =====================================================
-// NOTE ANALYZER
-// =====================================================
-
-
-function analyzeNote(){
-
-
-let upb =
-Number(
-document.getElementById(
-"noteUPB"
-).value
-);
-
-
-
-let price =
-Number(
-document.getElementById(
-"notePurchase"
-).value
-);
-
-
-
-let rate =
-Number(
-document.getElementById(
-"noteRate"
-).value
-);
-
-
-
-let payment =
-Number(
-document.getElementById(
-"notePayment"
-).value
-);
-
-
-
-let discount =
-upb-price;
-
-
-
-let annualIncome =
-payment*12;
-
-
-
-let roi =
-((annualIncome-price)/price)*100;
-
-
-
-document.getElementById(
-"noteResults"
-).innerHTML = `
-
-
-<h3>
-🧠 RO'Lyfe Underwriting Result
-</h3>
-
-
-<p>
-Discount Capture:
-${money(discount)}
-</p>
-
-
-<p>
-Annual Cash Flow:
-${money(annualIncome)}
-</p>
-
-
-<p>
-Projected ROI:
-${roi.toFixed(2)}%
-</p>
-
-
-<p>
-Interest Rate:
-${rate}%
-</p>
-
-
-`;
-
-
-}
-
-
-
-
-// =====================================================
-// ROI + COMPOUND ENGINE
-// =====================================================
-
-
-function calculateROI(){
-
-
-let investment =
-Number(
-document.getElementById(
-"investmentAmount"
-).value
-);
-
-
-
-let monthly =
-Number(
-document.getElementById(
-"cashFlow"
-).value
-);
-
-
-
-let years =
-Number(
-document.getElementById(
-"investmentYears"
-).value
-);
-
-
-
-let total =
-monthly *
-12 *
-years;
-
-
-
-let roi =
-((total-investment)
-/investment)*100;
-
-
-
-let compound =
-investment *
-Math.pow(
-1+(roi/100),
-years
-);
-
-
-
-document.getElementById(
-"roiResults"
-).innerHTML = `
-
-
-<h3>
-📈 ROI Intelligence
-</h3>
-
-
-<p>
-Cash Returned:
-${money(total)}
-</p>
-
-
-<p>
-ROI:
-${roi.toFixed(2)}%
-</p>
-
-
-<p>
-Compound Value:
-${money(compound)}
-</p>
-
-
-`;
-
-}
-
-
-
-
-// =====================================================
-// CREATIVE OFFER ENGINE
-// =====================================================
-
-
-function calculateOffer(){
-
-
-let arv =
-Number(
-document.getElementById(
-"arvOffer"
-).value
-);
-
-
-
-let type =
-document.getElementById(
-"offerType"
-).value
-;
-
-
-
-let result="";
-
-
-
-if(type==="cash"){
-
-
-result=
-
-`
-<h3>💵 Cash Offer</h3>
-
-Offer:
-${money(arv*.50)}
-
-`;
-
-}
-
-
-
-
-if(type==="carry"){
-
-
-let price =
-arv*.65;
-
-
-let down =
-price*.05;
-
-
-
-result=
-
-`
-<h3>🤝 Seller Carry</h3>
-
-Purchase:
-${money(price)}
-
-Down Payment:
-${money(down)}
-
-Seller Note:
-${money(price-down)}
-
-Interest:
-5%
-
-Balloon:
-4 Years
-
-`;
-
-}
-
-
-
-if(type==="finance"){
-
-
-let price =
-arv*.75;
-
-
-
-result=
-
-`
-
-<h3>📄 Seller Financing</h3>
-
-Purchase:
-${money(price)}
-
-Seller Note:
-${money(price)}
-
-Interest:
-6%
-
-Balloon:
-5 Years
-
-`;
-
-}
-
-
-
-document.getElementById(
-"offerResults"
-)
-.innerHTML=result;
-
-
-}
-
-
-
-
-
-// =====================================================
-// PDF REPORT
-// =====================================================
-
-
-function generatePDF(){
-
-
-const {jsPDF}
-=
-window.jspdf;
-
-
-
-let pdf =
-new jsPDF();
-
-
-
-pdf.text(
-"RO'Lyfe NoteForge™",
-20,
-20
-);
-
-
-
-pdf.text(
-"Capital Intelligence Report",
-20,
-35
-);
-
-
-
-pdf.text(
-"Root Of Lyfe Holdings LLC",
-20,
-50
-);
-
-
-
-pdf.save(
-"RO-Lyfe-NoteForge-Report.pdf"
-);
-
-
-}
-
-
-
-
-
-// =====================================================
-// EMAIL PACKAGE
-// =====================================================
-
-
-function emailPackage(){
-
-
-
-let subject =
-"RO'Lyfe NoteForge Investor Package";
-
-
-
-let body =
-`
-
-RO'Lyfe NoteForge Opportunity
-
-Included:
-
-- Note Analysis
-- ROI Projection
-- Underwriting Review
-- Deal Summary
-
-Thank you,
-
-Richardson L.
-Root Of Lyfe Holdings LLC
-
-richman@rootoflyfe.com
-
-`;
-
-
-
-window.location.href =
-
-"mailto:richman@rootoflyfe.com?subject="+
-
-encodeURIComponent(subject)
-
-+"&body="+
-
-encodeURIComponent(body);
-
-
-
-}
-
-
-
-
-// =====================================================
-// MOBILE MENU
-// =====================================================
-
-
-function toggleMenu(){
-
-
-let menu =
-document.getElementById(
-"mobileMenu"
-);
-
-
-menu.classList.toggle(
-"active"
-);
-
-
-}
-
-
-
-function scrollSection(id){
-
-document
-.getElementById(id)
-.scrollIntoView();
-
-
-}
-
-
-
-// =====================================================
-// MODULE CONNECTION READY
-// =====================================================
-
-
-console.log(
-"🏦 RO'Lyfe NoteForge™ Engine Online"
-);
