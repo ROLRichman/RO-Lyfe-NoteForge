@@ -549,7 +549,45 @@ Waiting for analysis...
 
 
 
+<!-- ==========================
+REHAB UNDERWRITING ENGINE
+========================== -->
 
+<section id="rehab" class="section">
+
+<h2>
+🔨 Rehab Underwriting Engine
+</h2>
+
+<div class="card">
+
+<p>
+Generate lender-ready rehab budgets using the standard COGO line-item template.
+</p>
+
+<div class="button-grid">
+
+<button class="glow-btn" onclick="loadRehabTemplate()">
+📋 Load Standard Template
+</button>
+
+<button class="glow-btn" onclick="downloadRehabBudget()">
+⬇ Download Rehab Budget
+</button>
+
+<button class="glow-btn" onclick="emailRehabBudget()">
+📧 Email Rehab Budget
+</button>
+
+</div>
+
+<div id="rehabTemplateContainer">
+
+</div>
+
+</div>
+
+</section>
 
 
 
@@ -1591,8 +1629,6 @@ database:
 
 
 
-
-
 <!-- ==========================
 MODULES
 ========================== -->
@@ -1623,7 +1659,22 @@ RO'LYFE ENGINE LOAD ORDER
 
 <script src="modules/email-engine.js"></script>
 
+<!-- Modules -->
 
+<script src="modules/ai-underwriter.js"></script>
+    
+<script src="modules/portfolio-engine.js"></script>
+    
+<script src="modules/property-engine.js"></script>
+    
+<script src="modules/investor-engine.js"></script>
+    
+<script src="modules/document-engine.js"></script>
+    
+<script src="modules/email-engine.js"></script>
+    
+<script src="modules/rehab-underwriting-engine.js"></script>
+    
 
 <!-- Calculators -->
 
