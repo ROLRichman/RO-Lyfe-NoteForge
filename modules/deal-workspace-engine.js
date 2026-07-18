@@ -11,10 +11,10 @@
 <div class="input-grid">
 
 
-<input 
+<input
 id="dealAddress"
-placeholder="Property Address">
-
+placeholder="Property Address"
+value="2855 W Lehigh Ave, Philadelphia, PA 19132">
 
 <input
 id="dealPurchase"
