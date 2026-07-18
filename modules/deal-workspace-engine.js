@@ -18,23 +18,23 @@ placeholder="Property Address">
 
 <input
 id="dealPurchase"
-placeholder="Purchase Price">
-
+placeholder="Purchase Price"
+value="65000">
 
 <input
 id="dealARV"
-placeholder="ARV">
-
+placeholder="ARV"
+value="225000">
 
 <input
 id="dealRehab"
-placeholder="Rehab Budget">
-
+placeholder="Rehab Budget"
+value="90000">
 
 <input
 id="dealBorrower"
-placeholder="Borrower Name">
-
+placeholder="Borrower Name"
+value="RJ Construction & Design">
 
 </div>
 
