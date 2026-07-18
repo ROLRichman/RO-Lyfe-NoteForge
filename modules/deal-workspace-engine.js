@@ -130,7 +130,6 @@ function createWorkspaceDeal(){
 
 let deal = createDeal();
 
-
 updateDealProperty({
 
 address:
@@ -158,13 +157,11 @@ document.getElementById("dealBorrower").value
 });
 
 
-
 document.getElementById(
 "dealWorkspaceResult"
 ).innerHTML =
 
 `
-
 <h3>
 ✅ Deal Created
 </h3>
