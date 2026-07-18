@@ -1,3 +1,7 @@
+<!-- ==========================
+RO'LYFE DEAL WORKSPACE
+========================== -->
+
 <section id="dealWorkspace" class="section">
 
 <h2>
@@ -16,27 +20,60 @@ id="dealAddress"
 placeholder="Property Address"
 value="2855 W Lehigh Ave, Philadelphia, PA 19132">
 
+
 <input
 id="dealPurchase"
 placeholder="Purchase Price"
 value="65000">
+
 
 <input
 id="dealARV"
 placeholder="ARV"
 value="225000">
 
+
 <input
 id="dealRehab"
 placeholder="Rehab Budget"
 value="90000">
+
 
 <input
 id="dealBorrower"
 placeholder="Borrower Name"
 value="RJ Construction & Design">
 
+
+<input
+id="dealCredit"
+placeholder="Borrower Credit Score"
+value="680">
+
+
+<select id="dealExit">
+
+<option value="Fix & Flip">
+Fix & Flip
+</option>
+
+<option value="BRRRR">
+BRRRR
+</option>
+
+<option value="DSCR">
+DSCR Hold
+</option>
+
+<option value="Wholesale">
+Wholesale
+</option>
+
+</select>
+
+
 </div>
+
 
 
 <button 
@@ -46,6 +83,17 @@ onclick="createWorkspaceDeal()">
 🚀 CREATE DEAL
 
 </button>
+
+
+
+<button 
+class="glow-btn"
+onclick="clearWorkspaceDeal()">
+
+🗑 CLEAR
+
+</button>
+
 
 
 <div 
@@ -61,97 +109,3 @@ No active deal.
 
 
 </section>
-
-
-<p>
-ID:
-${currentDeal.id}
-</p>
-
-<p>
-Property:
-${currentDeal.propertyAddress}
-</p>
-
-<p>
-ARV:
-$${currentDeal.arv}
-</p>
-
-<p>
-Rehab:
-$${currentDeal.rehabBudget}
-</p>
-
-`;
-
-  }
-
-function createWorkspaceDeal(){
-
-let deal = createDeal();
-
-updateDealProperty({
-
-address:
-document.getElementById("dealAddress").value,
-
-purchasePrice:
-document.getElementById("dealPurchase").value,
-
-arv:
-document.getElementById("dealARV").value
-
-});
-
-
-updateRehab(
-document.getElementById("dealRehab").value
-);
-
-
-updateBorrower({
-
-name:
-document.getElementById("dealBorrower").value
-
-});
-
-
-document.getElementById(
-"dealWorkspaceResult"
-).innerHTML =
-
-`
-<h3>
-✅ Deal Created
-</h3>
-
-<p>
-Deal ID:
-${currentDeal.id}
-</p>
-
-<p>
-Property:
-${currentDeal.propertyAddress}
-</p>
-
-<p>
-Purchase:
-$${currentDeal.purchasePrice}
-</p>
-
-<p>
-ARV:
-$${currentDeal.arv}
-</p>
-
-<p>
-Rehab:
-$${currentDeal.rehabBudget}
-</p>
-
-`;
-
-}
